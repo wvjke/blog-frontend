@@ -50,7 +50,7 @@ export const Tag = () => {
                 imageUrl={
                   obj.imageUrl
                     ? obj.imageUrl
-                    : "http://localhost:4444/uploads/noImage.png"
+                    : `${process.env.REACT_APP_API_URL}uploads/noImage.png`
                 }
                 user={obj.user}
                 createdAt={obj.createdAt}

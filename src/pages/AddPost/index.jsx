@@ -50,7 +50,7 @@ export const AddPost = () => {
 
       const fields = {
         title,
-        imageUrl: imageUrl ? `http://localhost:4444${imageUrl}` : "",
+        imageUrl: imageUrl ? `${process.env.REACT_APP_API_URL}${imageUrl}` : "",
         tags: tags.split(",").map(item => item.trim()),
         text,
       };
@@ -127,7 +127,7 @@ export const AddPost = () => {
           </Button>
           <img
             className={styles.image}
-            src={`http://localhost:4444${imageUrl}`}
+            src={`${process.env.REACT_APP_API_URL}${imageUrl}`}
             alt="Uploaded"
           />
         </>
