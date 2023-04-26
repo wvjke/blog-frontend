@@ -85,7 +85,7 @@ export const AddPost = () => {
       spellChecker: false,
       maxHeight: "400px",
       autofocus: true,
-      placeholder: "Введите текст...",
+      placeholder: "Enter text...",
       status: false,
       autosave: {
         enabled: true,
@@ -107,7 +107,7 @@ export const AddPost = () => {
         variant="outlined"
         size="large"
       >
-        Загрузить превью
+        Load image
       </Button>
       <input
         ref={inputFileRef}
@@ -123,7 +123,7 @@ export const AddPost = () => {
             color="error"
             onClick={onClickRemoveImage}
           >
-            Удалить
+            Delete
           </Button>
           <img
             className={styles.image}
@@ -138,7 +138,7 @@ export const AddPost = () => {
       <TextField
         classes={{ root: styles.title }}
         variant="standard"
-        placeholder="Заголовок статьи..."
+        placeholder="Post title..."
         value={title}
         onChange={(e) => setTitle(e.target.value)}
         fullWidth
@@ -146,7 +146,7 @@ export const AddPost = () => {
       <TextField
         classes={{ root: styles.tags }}
         variant="standard"
-        placeholder="Тэги"
+        placeholder="Tags"
         value={tags}
         onChange={(e) => setTags(e.target.value)}
         fullWidth
@@ -160,10 +160,10 @@ export const AddPost = () => {
       />
       <div className={styles.buttons}>
         <Button onClick={onSubmit} size="large" variant="contained">
-          {isEditing ? "Сохранить" : "Опубликовать"}
+          {isEditing ? "Save" : "Post"}
         </Button>
         <a href="/">
-          <Button size="large">Отмена</Button>
+          <Button size="large">Cancel</Button>
         </a>
       </div>
     </Paper>

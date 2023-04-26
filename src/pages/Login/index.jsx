@@ -18,8 +18,8 @@ export const Login = () => {
     formState: { errors, isValid },
   } = useForm({
     defaultValues: {
-      email: "dsa@mail.ru",
-      password: "123345",
+      email: "",
+      password: "",
     },
     mode: "onChange",
   });
@@ -42,7 +42,7 @@ export const Login = () => {
   return (
     <Paper classes={{ root: styles.root }}>
       <Typography classes={{ root: styles.title }} variant="h5">
-        Вход в аккаунт
+        Login
       </Typography>
       <form onSubmit={handleSubmit(onSubmit)}>
         <TextField
@@ -56,7 +56,7 @@ export const Login = () => {
         />
         <TextField
           className={styles.field}
-          label="Пароль"
+          label="Password"
           error={Boolean(errors.password?.message)}
           helperText={errors.password?.message}
           fullWidth
@@ -64,7 +64,7 @@ export const Login = () => {
           {...register("password", { required: "Enter password" })}
         />
         <Button disabled={!isValid} type="submit" size="large" variant="contained" fullWidth>
-          Войти
+          Sign in
         </Button>
       </form>
     </Paper>
