@@ -35,7 +35,7 @@ export const CommentsBlock = ({
   };
 
   return (
-    <SideBlock title="Комментарии">
+    <SideBlock title="Comments">
       <List>
         {(isLoading && items.length < 1 ? [...Array(5)] : items).map(
           (obj, index) => (

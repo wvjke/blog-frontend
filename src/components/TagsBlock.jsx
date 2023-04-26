@@ -19,7 +19,7 @@ export const TagsBlock = ({ items, isLoading = true }) => {
   }
 
   return (
-    <SideBlock title="Тэги">
+    <SideBlock title="Tags">
       <List>
         {(isLoading ? [...Array(5)] : filteredTags).map((name, i) => (
           <Link
