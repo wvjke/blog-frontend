@@ -6,7 +6,6 @@ import { fetchPosts } from "../../redux/slices/posts";
 import { useDispatch, useSelector } from "react-redux";
 
 export const Tag = () => {
-
   const params = useParams();
 
   const dispatch = useDispatch();
@@ -14,23 +13,20 @@ export const Tag = () => {
   const userData = useSelector((state) => state.auth.data);
 
   const isPostsLoading = posts.status === "loading";
-  let filteredPosts = []
+  let filteredPosts = [];
 
   React.useEffect(() => {
     dispatch(fetchPosts());
     // eslint-disable-next-line
   }, []);
 
-
-
   if (posts.items.length > 0) {
-    filteredPosts = posts.items.filter(obj => obj.tags.indexOf(params.value) !== -1);
+    filteredPosts = posts.items.filter(
+      (obj) => obj.tags.indexOf(params.value) !== -1
+    );
   } else {
-    return <h1>No posts found</h1>
+    return <h1>No posts found</h1>;
   }
-
-  console.log(posts.items);
-  console.log(filteredPosts);
 
   return (
     <>
@@ -50,7 +46,7 @@ export const Tag = () => {
                 imageUrl={
                   obj.imageUrl
                     ? obj.imageUrl
-                    : `${process.env.REACT_APP_API_URL}uploads/noImage.png`
+                    : "https://wvjkeblogbucket.s3.eu-central-1.amazonaws.com/no_image_good.png"
                 }
                 user={obj.user}
                 createdAt={obj.createdAt}

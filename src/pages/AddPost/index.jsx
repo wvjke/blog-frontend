@@ -22,7 +22,6 @@ export const AddPost = () => {
 
   const isEditing = Boolean(id);
 
-
   const inputFileRef = React.useRef(null);
 
   const handleChangeFile = async (event) => {
@@ -30,8 +29,17 @@ export const AddPost = () => {
       const formData = new FormData();
       const file = event.target.files[0];
       formData.append("image", file);
-      const { data } = await axios.post("/upload", formData);
-      setImageUrl(data.url);
+      const {
+        data: { uploadURL },
+      } = await axios.get("/s3Url");
+      await fetch(uploadURL, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+        body: file,
+      });
+      setImageUrl(uploadURL.split("?")[0]);
     } catch (err) {
       console.warn(err);
     }
@@ -47,11 +55,10 @@ export const AddPost = () => {
 
   const onSubmit = async () => {
     try {
-
       const fields = {
         title,
-        imageUrl: imageUrl ? `${process.env.REACT_APP_API_URL}${imageUrl}` : "",
-        tags: tags.split(",").map(item => item.trim()),
+        imageUrl: imageUrl,
+        tags: tags.split(",").map((item) => item.trim()),
         text,
       };
 
@@ -73,7 +80,7 @@ export const AddPost = () => {
       axios.get(`/posts/${id}`).then(({ data }) => {
         setTitle(data.title);
         setText(data.text);
-        setImageUrl(data.imageUrl.slice(21));
+        setImageUrl(data.imageUrl);
         setTags(data.tags.join(","));
       });
     }
@@ -127,7 +134,7 @@ export const AddPost = () => {
           </Button>
           <img
             className={styles.image}
-            src={`${process.env.REACT_APP_API_URL}${imageUrl}`}
+            src={imageUrl}
             alt="Uploaded"
           />
         </>
