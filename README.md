@@ -2,7 +2,7 @@
 
  Visit https://wvjke.github.io/ 
 
-<img src="https://i.ibb.co/mF7LzHK/Screenshot-1.png" alt= “screenshot” width="60%" align="middle">
+<img src="https://img.onl/ySZt0c" alt= “screenshot” width="60%" align="middle">
 
 ## Used techs
 * React (rca, Hooks, Routing)
